@@ -7,10 +7,11 @@ module.exports = app => {
   // 数据库表的映射
   const UserSchema = new Schema({
     username: { type: String },
+    sex: { type: String },
     status: {
       type: Number,
       default: 1,
     },
   });
-  return mongoose.model('Gyk', UserSchema, 'gyk');
+  return mongoose.model('emoticon_list', UserSchema, 'emoticon_list');
 };

@@ -19,8 +19,8 @@
       "GET"
     ],
     "paramNames": [],
-    "path": "/demo",
-    "regexp": "/^\\/demo(?:\\/(?=$))?$/",
+    "path": "/emoticonList",
+    "regexp": "/^\\/emoticonList(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -32,21 +32,8 @@
       "GET"
     ],
     "paramNames": [],
-    "path": "/web_demo",
-    "regexp": "/^\\/web_demo(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
-      "HEAD",
-      "GET"
-    ],
-    "paramNames": [],
-    "path": "/add",
-    "regexp": "/^\\/add(?:\\/(?=$))?$/",
+    "path": "/addDemo",
+    "regexp": "/^\\/addDemo(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
