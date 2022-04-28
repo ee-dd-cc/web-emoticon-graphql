@@ -18,7 +18,8 @@ class UserController extends Controller {
   // }
   async addDemo() {
     const user = new this.ctx.model.Web({
-      type: '123'
+      type: 1,
+      imgList: [1,2,3]
     });
     const res = await user.save();
     console.log('----res', res);

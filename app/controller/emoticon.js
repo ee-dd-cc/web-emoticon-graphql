@@ -5,8 +5,13 @@ const Controller = require('egg').Controller;
 class UserController extends Controller {
   async getEmoticonList() {
     console.log('----this.ctx', this.ctx.query)
-    const list = await this.ctx.model.Emoticon.find(this.ctx.query).limit(10);
-    this.ctx.body = list
+    const list = await this.ctx.model.Emoticon.find(this.ctx.query).limit(12);
+    if(list && list.length) {
+      this.ctx.body = {
+        code: 1,
+        data: list
+      }
+    }
   }
   // async index() {
   //   const list = await this.ctx.model.User.find({});

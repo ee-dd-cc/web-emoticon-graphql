@@ -6,8 +6,8 @@ module.exports = app => {
   const Schema = mongoose.Schema;
   // 数据库表的映射
   const UserSchema = new Schema({
-    username: { type: String },
-    sex: { type: String },
+    imgList: { type: Array },
+    type: { type: Number },
     status: {
       type: Number,
       default: 1,
