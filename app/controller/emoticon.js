@@ -13,6 +13,23 @@ class UserController extends Controller {
       }
     }
   }
+  async getEmoticonDetail() {
+    const { id = '' } = this.ctx.query
+    const list = await this.ctx.model.Emoticon.find({
+      _id: id
+    });
+    if(list && list.length) {
+      this.ctx.body = {
+        code: 1,
+        data: list[0]
+      }
+    } else {
+      this.ctx.body = {
+        code: -1,
+        data: null
+      }
+    }
+  }
   // async index() {
   //   const list = await this.ctx.model.User.find({});
   //   this.ctx.body = list;
