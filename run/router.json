@@ -45,6 +45,19 @@
       "GET"
     ],
     "paramNames": [],
+    "path": "/emojiDetail",
+    "regexp": "/^\\/emojiDetail(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
     "path": "/addDemo",
     "regexp": "/^\\/addDemo(?:\\/(?=$))?$/",
     "stack": [

@@ -9,5 +9,5 @@ module.exports = app => {
     // username: { type: String },
     // sex: { type: String }
   });
-  return mongoose.model('emoticon_list', UserSchema, 'emoticon_list');
+  return mongoose.model('emoji_list', UserSchema, 'emoji_list');
 };

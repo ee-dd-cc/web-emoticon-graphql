@@ -2,7 +2,7 @@
 
 const Controller = require('egg').Controller;
 
-class UserController extends Controller {
+class EmoticonController extends Controller {
   async getEmoticonList() {
     console.log('----this.ctx', this.ctx.query)
     const list = await this.ctx.model.Emoticon.find(this.ctx.query).limit(12);
@@ -15,8 +15,9 @@ class UserController extends Controller {
   }
   async getEmoticonDetail() {
     const { id = '' } = this.ctx.query
+    // console.log('----id', id)
     const list = await this.ctx.model.Emoticon.find({
-      _id: id
+      _id: `${id}`
     });
     if(list && list.length) {
       this.ctx.body = {
@@ -30,23 +31,6 @@ class UserController extends Controller {
       }
     }
   }
-  // async index() {
-  //   const list = await this.ctx.model.User.find({});
-  //   this.ctx.body = list;
-  // }
-  // async web_demo() {
-  //   const list = await this.ctx.model.Web.find({});
-  //   this.ctx.body = list;
-  // }
-  // async addUser() {
-  //   const user = new this.ctx.model.Web({
-  //     username: '123',
-  //     sex: '男'
-  //   });
-  //   const res = await user.save();
-  //   console.log('----res', res);
-  //   this.ctx.body = '增加用户成功';
-  // }
 }
 
-module.exports = UserController;
+module.exports = EmoticonController;
