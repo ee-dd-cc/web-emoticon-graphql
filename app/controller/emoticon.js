@@ -7,6 +7,12 @@ class EmoticonController extends Controller {
     console.log('----this.ctx', this.ctx.query)
     const list = await this.ctx.model.Emoticon.find(this.ctx.query).limit(12);
     if(list && list.length) {
+      // list.forEach(item => {
+      //   console.log('----typeof item.imgList', typeof item.imgList)
+      //   if(typeof item.imgList == 'string') {
+      //     item.imgList = JSON.parse(item.imgList)
+      //   }
+      // })
       this.ctx.body = {
         code: 1,
         data: list
