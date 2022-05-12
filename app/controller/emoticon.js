@@ -7,7 +7,9 @@ class EmoticonController extends Controller {
   async getEmoticonList() {
     let list = []
     try {
-      list = await this.ctx.model.Emoticon.find(this.ctx.query).limit(12)
+      const { pageSize = 10, pageNo = 1 } = this.ctx.query
+      console.log('getEmoticonList----this.ctx.query', this.ctx.query)
+      list = await this.ctx.model.Emoticon.find().skip(pageSize * pageNo).limit(+pageSize)
     } catch (error) {
       console.log('getEmoticonList---error', error)
     } finally {
