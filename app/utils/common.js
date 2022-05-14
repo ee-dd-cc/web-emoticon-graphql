@@ -1,16 +1,18 @@
 'use strict';
 
 module.exports = {
-  ctxBody({list = [], type = 'array'}) {
+  ctxBody({ list = [], custom = {} }) {
     let body = {
-      code: -1,
-      data: null
+      code: list ? 1 : -1,
+      data: list,
+      ...custom
     }
-    if (list && list.length) {
-      body = {
-        code: 1,
-        data: type === 'array' ? list : list[0]
-      }
+    return body
+  },
+  objectBody({ obj = {} }) {
+    let body = {
+      code: obj ? 1 : -1,
+      data: obj ? obj : null
     }
     return body
   },
@@ -35,5 +37,8 @@ module.exports = {
       }
     }
     return body
+  },
+  randomCount(count) {
+    return Math.floor(Math.random() * count)
   }
 }

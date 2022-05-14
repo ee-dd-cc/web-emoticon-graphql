@@ -258,9 +258,10 @@
         "node": ">=10.0.0"
       },
       "scripts": {
+        "dev": "egg-bin dev",
         "start": "egg-scripts start --daemon --title=egg-server-web-emoticon-graphql",
         "stop": "egg-scripts stop --title=egg-server-web-emoticon-graphql",
-        "dev": "egg-bin dev",
+        "reload": "npm run stop && npm run start",
         "debug": "egg-bin debug",
         "test": "npm run lint -- --fix && npm run test-local",
         "test-local": "egg-bin test",
@@ -610,9 +611,10 @@
         "node": ">=10.0.0"
       },
       "scripts": {
+        "dev": "egg-bin dev",
         "start": "egg-scripts start --daemon --title=egg-server-web-emoticon-graphql",
         "stop": "egg-scripts stop --title=egg-server-web-emoticon-graphql",
-        "dev": "egg-bin dev",
+        "reload": "npm run stop && npm run start",
         "debug": "egg-bin debug",
         "test": "npm run lint -- --fix && npm run test-local",
         "test-local": "egg-bin test",

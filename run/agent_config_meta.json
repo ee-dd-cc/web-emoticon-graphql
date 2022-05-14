@@ -218,9 +218,10 @@
       "node": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js"
     },
     "scripts": {
+      "dev": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
       "start": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
       "stop": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
-      "dev": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
+      "reload": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
       "debug": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
       "test": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
       "test-local": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
