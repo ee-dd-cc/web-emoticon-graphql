@@ -24,27 +24,9 @@
     "app": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-mongoose\\config\\config.default.js",
     "agent": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-mongoose\\config\\config.default.js"
   },
-  "mongo": {
-    "client": {
-      "host": "G:\\Work\\person\\web-emoticon-graphql\\config\\config.default.js",
-      "port": "G:\\Work\\person\\web-emoticon-graphql\\config\\config.default.js",
-      "name": "G:\\Work\\person\\web-emoticon-graphql\\config\\config.default.js",
-      "options": "G:\\Work\\person\\web-emoticon-graphql\\config\\config.default.js"
-    }
-  },
-  "session": {
-    "maxAge": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-session\\config\\config.default.js",
-    "key": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-session\\config\\config.default.js",
-    "httpOnly": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-session\\config\\config.default.js",
-    "encrypt": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-session\\config\\config.default.js",
-    "logValue": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-session\\config\\config.default.js"
-  },
   "security": {
-    "domainWhiteList": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-security\\config\\config.default.js",
-    "protocolWhiteList": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-security\\config\\config.default.js",
-    "defaultMiddleware": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-security\\config\\config.default.js",
     "csrf": {
-      "enable": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-security\\config\\config.default.js",
+      "enable": "G:\\Work\\person\\web-emoticon-graphql\\config\\config.default.js",
       "type": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-security\\config\\config.default.js",
       "ignoreJSON": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-security\\config\\config.default.js",
       "useSession": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-security\\config\\config.default.js",
@@ -56,6 +38,9 @@
       "supportedRequests": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-security\\config\\config.default.js",
       "refererWhiteList": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-security\\config\\config.default.js"
     },
+    "domainWhiteList": "G:\\Work\\person\\web-emoticon-graphql\\config\\config.default.js",
+    "protocolWhiteList": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-security\\config\\config.default.js",
+    "defaultMiddleware": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-security\\config\\config.default.js",
     "xframe": {
       "enable": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-security\\config\\config.default.js",
       "value": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-security\\config\\config.default.js"
@@ -94,6 +79,25 @@
       "ipExceptionList": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-security\\config\\config.default.js",
       "checkAddress": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-security\\config\\config.default.js"
     }
+  },
+  "cors": {
+    "origin": "G:\\Work\\person\\web-emoticon-graphql\\config\\config.default.js",
+    "allowMethods": "G:\\Work\\person\\web-emoticon-graphql\\config\\config.default.js"
+  },
+  "mongo": {
+    "client": {
+      "host": "G:\\Work\\person\\web-emoticon-graphql\\config\\config.default.js",
+      "port": "G:\\Work\\person\\web-emoticon-graphql\\config\\config.default.js",
+      "name": "G:\\Work\\person\\web-emoticon-graphql\\config\\config.default.js",
+      "options": "G:\\Work\\person\\web-emoticon-graphql\\config\\config.default.js"
+    }
+  },
+  "session": {
+    "maxAge": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-session\\config\\config.default.js",
+    "key": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-session\\config\\config.default.js",
+    "httpOnly": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-session\\config\\config.default.js",
+    "encrypt": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-session\\config\\config.default.js",
+    "logValue": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-session\\config\\config.default.js"
   },
   "helper": {
     "shtml": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-security\\config\\config.default.js"
@@ -201,6 +205,7 @@
     },
     "dependencies": {
       "egg": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
+      "egg-cors": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
       "egg-graphql": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
       "egg-mongoose": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
       "egg-scripts": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js"

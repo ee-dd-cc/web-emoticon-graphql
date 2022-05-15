@@ -10,7 +10,7 @@ class EmoticonController extends Controller {
     let randomPageNo = 1
     try {
       console.log('getEmoticonList----this.ctx.query', this.ctx.query)
-      let { pageSize = 10, pageNo = 1, random = '' } = this.ctx.query
+      let { pageNo = 1, pageSize = 20, random = '', needhot = '' } = this.ctx.query
       total = await this.ctx.model.Emoticon.count()
       if (total && random == '100') {
         pageNo = randomCount(Math.ceil(total / pageSize))
@@ -44,55 +44,49 @@ class EmoticonController extends Controller {
     } catch (error) {
       console.log('getEmoticonDetail---error', error)
     } finally {
-      this.ctx.body = adjacentBody(adjacentInfo)
+      this.ctx.body = adjacentBody({item: adjacentInfo})
     }
   }
   async searchKeyword() {
-    let emoticonList = null
+    let list = null
     let emojiList = null
-    let emoticonTotal = 0
-    let emojiTotal = 0
+    let emoticonList = null
+    let total = 0
+    let bodyType = ''
     try {
-      const { keyword = '', pageNo = 1, pageSize = 15 } = this.ctx.query
-      emoticonTotal = await this.ctx.model.Emoticon
-        .find({
-          title: { $regex: keyword }
-        })
-        .count()
-      emojiTotal = await this.ctx.model.Emoji
-        .find({
-          imgTitle: { $regex: keyword }
-        })
-        .count()
-      emoticonList = await this.ctx.model.Emoticon
-        .find({
-          title: { $regex: keyword }
-        })
-        .skip(pageSize * (pageNo - 1))
-        .limit(+pageSize)
-      emojiList = await this.ctx.model.Emoji
-        .find({
-          imgTitle: { $regex: keyword }
-        })
-        .skip(pageSize * (pageNo - 1))
-        .limit(+pageSize)
-      console.log('----emoticonTotal', emoticonTotal)
-      console.log('----emojiTotal', emojiTotal)
+      const { keyword = '', pageNo = 1, pageSize = 20, type = 'emoji' } = this.ctx.query
+      if (!keyword) {
+        return {
+          code: 1,
+          data: null,
+          total: 0
+        }
+      }
+      if (type === 'emoji') {
+        total = await this.ctx.model.Emoji.find({imgDes: { $regex: keyword }}).count()
+        list = await this.ctx.model.Emoji.find({imgDes: { $regex: keyword }}).skip(pageSize * (pageNo - 1)).limit(+pageSize)
+      }
+      if (type === 'emoticon') {
+        total = await this.ctx.model.Emoticon.find({title: { $regex: keyword }}).count()
+        list = await this.ctx.model.Emoticon.find({title: { $regex: keyword }}).skip(pageSize * (pageNo - 1)).limit(+pageSize)
+      }
+      if (type === 'all') {
+        bodyType = type
+        emojiList = await this.ctx.model.Emoji.find({imgDes: { $regex: keyword }}).skip(pageSize * (pageNo - 1)).limit(+pageSize)
+        emoticonList = await this.ctx.model.Emoticon.find({title: { $regex: keyword }}).skip(pageSize * (pageNo - 1)).limit(+pageSize)
+      }
     } catch (error) {
       console.log('searchEmoticon---error', error)
     } finally {
-      this.ctx.body = objectBody({
-        obj: {
-          emoticon: {
-            data: emoticonList,
-            total: emoticonTotal
-          },
-          emoji: {
-            data: emojiList,
-            total: emojiTotal
-          }
+      this.ctx.body = bodyType === 'all' 
+      ? {
+          code: emojiList && emoticonList ? 1 : -1,
+          data: emojiList && emoticonList ? {
+            emoji: emojiList,
+            emoticon: emoticonList
+          } : null
         }
-      })
+      : ctxBody({list, custom: { total }})
     }
   }
 }

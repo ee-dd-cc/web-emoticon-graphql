@@ -20,7 +20,7 @@ module.exports = {
    * 处理相邻的文档
    * @params
    */
-  adjacentBody(item) {
+  adjacentBody({item, custom = {} }) {
     let body = {
       code: -1,
       data: null
@@ -32,7 +32,8 @@ module.exports = {
         data: {
           selfNode,
           preNode,
-          nextNode
+          nextNode,
+          ...custom
         }
       }
     }
