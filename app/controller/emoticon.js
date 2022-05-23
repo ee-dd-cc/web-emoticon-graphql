@@ -26,16 +26,15 @@ class EmoticonController extends Controller {
   async getEmoticonDetail() {
     let adjacentInfo = {}
     try {
-      const { id = '' } = this.ctx.query
-      const list = await this.ctx.model.Emoticon.find({
-        _id: id
-      })
+      let { id = 1000 } = this.ctx.query // 没有表情包默认返回第一张
+      id = Number(id)
+      const list = await this.ctx.model.Emoticon.find({ id })
       const preNode = await this.ctx.model.Emoticon.find({
-        _id: { "$lt": id }
-      }).sort({"_id": -1}).limit(1)
+        id: { "$lt": id }
+      }).sort({id: -1}).limit(1)
       const nextNode = await this.ctx.model.Emoticon.find({
-        _id: { "$gt": id }
-      }).sort({"_id": 1}).limit(1)
+        id: { "$gt": id }
+      }).sort({id: 1}).limit(1)
       adjacentInfo = {
         selfNode: list[0],
         preNode: preNode[0],

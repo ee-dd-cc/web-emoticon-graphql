@@ -8,22 +8,24 @@ class EmojiController extends Controller {
     let adjacentInfo = {}
     let hot = null
     try {
-      const { id = '' } = this.ctx.query
-      const list = await this.ctx.model.Emoji.find({
-        _id: id
-      })
+      let { id = 1000 } = this.ctx.query
+      id = Number(id)
+      const list = await this.ctx.model.Emoji.find({ id })
       const preNode = await this.ctx.model.Emoji.find({
-        _id: { "$lt": id }
-      }).sort({"_id": -1}).limit(1)
+        id: { "$lt": id }
+      }).sort({id: -1}).limit(1)
       const nextNode = await this.ctx.model.Emoji.find({
-        _id: { "$gt": id }
-      }).sort({"_id": 1}).limit(1)
+        id: { "$gt": id }
+      }).sort({id: 1}).limit(1)
       hot = await this.ctx.model.Emoji.find().skip(15 * 18).limit(16)
-      console.log('----hot', hot.length)
+      // console.log('----hot', hot.length)
+      // console.log('----list', list.length)
+      console.log('----preNode', preNode.length)
+      console.log('----nextNode', nextNode.length)
       adjacentInfo = {
         selfNode: list[0],
-        preNode: preNode[0],
-        nextNode: nextNode[0]
+        preNode: preNode.length ? preNode[0] : null,
+        nextNode: nextNode.length ? nextNode[0] : null
       }
     } catch (error) {
       console.log('getEmojiDetail---error', error)

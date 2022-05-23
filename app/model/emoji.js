@@ -10,4 +10,5 @@ module.exports = app => {
     // sex: { type: String }
   });
   return mongoose.model('emoji_list', UserSchema, 'emoji_list');
+  // return mongoose.model('hot_list_deal_emoji', UserSchema, 'hot_list_deal_emoji');
 };
