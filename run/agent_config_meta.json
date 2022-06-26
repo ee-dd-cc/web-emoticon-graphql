@@ -46,7 +46,7 @@
       "value": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-security\\config\\config.default.js"
     },
     "hsts": {
-      "enable": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-security\\config\\config.local.js",
+      "enable": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-security\\config\\config.default.js",
       "maxAge": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-security\\config\\config.default.js",
       "includeSubdomains": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-security\\config\\config.default.js"
     },
@@ -84,13 +84,8 @@
     "origin": "G:\\Work\\person\\web-emoticon-graphql\\config\\config.default.js",
     "allowMethods": "G:\\Work\\person\\web-emoticon-graphql\\config\\config.default.js"
   },
-  "mongo": {
-    "client": {
-      "host": "G:\\Work\\person\\web-emoticon-graphql\\config\\config.default.js",
-      "port": "G:\\Work\\person\\web-emoticon-graphql\\config\\config.default.js",
-      "name": "G:\\Work\\person\\web-emoticon-graphql\\config\\config.default.js",
-      "options": "G:\\Work\\person\\web-emoticon-graphql\\config\\config.default.js"
-    }
+  "mongoConfig": {
+    "a": "G:\\Work\\person\\web-emoticon-graphql\\config\\config.default.js"
   },
   "session": {
     "maxAge": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-session\\config\\config.default.js",
@@ -121,7 +116,7 @@
     "cookieMaxAge": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-i18n\\config\\config.default.js"
   },
   "watcher": {
-    "type": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-watcher\\config\\config.local.js",
+    "type": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-watcher\\config\\config.default.js",
     "eventSources": {
       "default": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-watcher\\config\\config.default.js",
       "development": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-watcher\\config\\config.default.js"
@@ -154,14 +149,6 @@
       "disable": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-multipart\\config\\config.default.js"
     }
   },
-  "development": {
-    "watchDirs": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-development\\config\\config.default.js",
-    "ignoreDirs": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-development\\config\\config.default.js",
-    "fastReady": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-development\\config\\config.default.js",
-    "reloadOnDebug": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-development\\config\\config.default.js",
-    "overrideDefault": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-development\\config\\config.default.js",
-    "overrideIgnore": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-development\\config\\config.default.js"
-  },
   "logrotator": {
     "filesRotateByHour": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-logrotator\\config\\config.default.js",
     "hourDelimiter": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-logrotator\\config\\config.default.js",
@@ -181,7 +168,7 @@
   },
   "view": {
     "root": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-view\\config\\config.default.js",
-    "cache": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-view\\config\\config.local.js",
+    "cache": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-view\\config\\config.default.js",
     "defaultExtension": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-view\\config\\config.default.js",
     "defaultViewEngine": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-view\\config\\config.default.js",
     "mapping": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-view\\config\\config.default.js"
@@ -224,7 +211,9 @@
     },
     "scripts": {
       "dev": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
-      "start": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
+      "dev:prod": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
+      "start:dev": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
+      "start:prod": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
       "stop": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
       "reload": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
       "debug": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
@@ -292,9 +281,7 @@
     "coreLogName": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
     "agentLogName": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
     "errorLogName": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
-    "coreLogger": {
-      "consoleLevel": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.local.js"
-    },
+    "coreLogger": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
     "allowDebugAtProd": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js",
     "enablePerformanceTimer": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg\\config\\config.default.js"
   },

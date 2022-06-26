@@ -3,6 +3,7 @@
 module.exports = app => {
   // 引入建立连接的mongoose
   const mongoose = app.mongoose;
+  // const mongoConfig = app.config.mongoConfig;
   const Schema = mongoose.Schema;
   // 数据库表的映射
   const UserSchema = new Schema({

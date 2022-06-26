@@ -116,7 +116,6 @@
         "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-watcher\\config\\locales",
         "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-schedule\\config\\locales",
         "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-multipart\\config\\locales",
-        "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-development\\config\\locales",
         "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-logrotator\\config\\locales",
         "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-static\\config\\locales",
         "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-view\\config\\locales",
@@ -133,7 +132,7 @@
       "functionName": "__"
     },
     "watcher": {
-      "type": "development",
+      "type": "default",
       "eventSources": {
         "default": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-watcher\\lib\\event-sources\\default",
         "development": "G:\\Work\\person\\web-emoticon-graphql\\node_modules\\egg-watcher\\lib\\event-sources\\development"
@@ -166,14 +165,6 @@
         "disable": false
       }
     },
-    "development": {
-      "watchDirs": [],
-      "ignoreDirs": [],
-      "fastReady": false,
-      "reloadOnDebug": true,
-      "overrideDefault": false,
-      "overrideIgnore": false
-    },
     "logrotator": {
       "filesRotateByHour": null,
       "hourDelimiter": "-",
@@ -193,7 +184,7 @@
     },
     "view": {
       "root": "G:\\Work\\person\\web-emoticon-graphql\\app\\view",
-      "cache": false,
+      "cache": true,
       "defaultExtension": ".html",
       "defaultViewEngine": "",
       "mapping": {}
@@ -217,7 +208,7 @@
       "app": true,
       "agent": false,
       "client": {
-        "url": "mongodb://EdisonGu:Gu198573@1.14.77.152:27017/web-emoticon?authSource=admin",
+        "url": "mongodb://EdisonGu:Gu198573@1.14.77.152:27017/web_emoticon_test?authSource=admin",
         "options": {
           "useNewUrlParser": true
         }
@@ -227,7 +218,7 @@
       "origin": "*",
       "allowMethods": "GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS"
     },
-    "env": "local",
+    "env": "dev",
     "name": "web-emoticon-graphql",
     "keys": "<String len: 39>",
     "cookies": {},
@@ -265,8 +256,10 @@
         "node": ">=10.0.0"
       },
       "scripts": {
-        "dev": "egg-bin dev",
-        "start": "egg-scripts start --daemon --title=egg-server-web-emoticon-graphql",
+        "dev": "egg-bin dev --env=dev",
+        "dev:prod": "egg-bin dev --env=prod",
+        "start:dev": "egg-scripts start --env=dev --daemon --title=egg-server-web-emoticon-graphql --ignore-stderr",
+        "start:prod": "egg-scripts start --env=prod --daemon --title=egg-server-web-emoticon-graphql --ignore-stderr",
         "stop": "egg-scripts stop --title=egg-server-web-emoticon-graphql",
         "reload": "npm run stop && npm run start",
         "debug": "egg-bin debug",
@@ -322,21 +315,19 @@
       "returnRawBody": true
     },
     "logger": {
-      "dir": "G:\\Work\\person\\web-emoticon-graphql\\logs\\web-emoticon-graphql",
+      "dir": "C:\\Users\\EDC\\logs\\web-emoticon-graphql",
       "encoding": "utf8",
-      "env": "local",
+      "env": "dev",
       "level": "INFO",
       "consoleLevel": "INFO",
-      "disableConsoleAfterReady": false,
+      "disableConsoleAfterReady": true,
       "outputJSON": false,
       "buffer": true,
       "appLogName": "web-emoticon-graphql-web.log",
       "coreLogName": "egg-web.log",
       "agentLogName": "egg-agent.log",
       "errorLogName": "common-error.log",
-      "coreLogger": {
-        "consoleLevel": "WARN"
-      },
+      "coreLogger": {},
       "allowDebugAtProd": false,
       "enablePerformanceTimer": false,
       "type": "application"
@@ -352,13 +343,17 @@
         "keepAlive": true,
         "freeSocketTimeout": 4000,
         "maxSockets": 9007199254740991,
-        "maxFreeSockets": 256
+        "maxFreeSockets": 256,
+        "timeout": 8000,
+        "socketActiveTTL": 0
       },
       "httpsAgent": {
         "keepAlive": true,
         "freeSocketTimeout": 4000,
         "maxSockets": 9007199254740991,
-        "maxFreeSockets": 256
+        "maxFreeSockets": 256,
+        "timeout": 8000,
+        "socketActiveTTL": 0
       }
     },
     "meta": {
@@ -375,8 +370,7 @@
       "overrideMethod",
       "session",
       "securities",
-      "i18n",
-      "eggLoaderTrace"
+      "i18n"
     ],
     "workerStartTimeout": 600000,
     "serverTimeout": null,
@@ -393,13 +387,8 @@
     },
     "onClientError": null,
     "middleware": [],
-    "mongo": {
-      "client": {
-        "host": "1.14.77.152",
-        "port": "27017",
-        "name": "root",
-        "options": {}
-      }
+    "mongoConfig": {
+      "a": 1
     },
     "coreMiddlewares": "~config~coreMiddleware",
     "appMiddlewares": "~config~middleware",
@@ -491,7 +480,7 @@
       "version": "2.10.1"
     },
     "development": {
-      "enable": true,
+      "enable": false,
       "package": "egg-development",
       "name": "development",
       "dependencies": [
@@ -601,7 +590,7 @@
   "appInfo": {
     "name": "web-emoticon-graphql",
     "baseDir": "G:\\Work\\person\\web-emoticon-graphql",
-    "env": "local",
+    "env": "dev",
     "HOME": "C:\\Users\\EDC",
     "pkg": {
       "name": "web-emoticon-graphql",
@@ -631,8 +620,10 @@
         "node": ">=10.0.0"
       },
       "scripts": {
-        "dev": "egg-bin dev",
-        "start": "egg-scripts start --daemon --title=egg-server-web-emoticon-graphql",
+        "dev": "egg-bin dev --env=dev",
+        "dev:prod": "egg-bin dev --env=prod",
+        "start:dev": "egg-scripts start --env=dev --daemon --title=egg-server-web-emoticon-graphql --ignore-stderr",
+        "start:prod": "egg-scripts start --env=prod --daemon --title=egg-server-web-emoticon-graphql --ignore-stderr",
         "stop": "egg-scripts stop --title=egg-server-web-emoticon-graphql",
         "reload": "npm run stop && npm run start",
         "debug": "egg-bin debug",
@@ -653,6 +644,6 @@
       "author": "",
       "license": "MIT"
     },
-    "root": "G:\\Work\\person\\web-emoticon-graphql"
+    "root": "C:\\Users\\EDC"
   }
 }

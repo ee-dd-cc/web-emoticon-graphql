@@ -43,7 +43,7 @@ module.exports = appInfo => {
 
   config.mongoose = {
     client: {
-      url: 'mongodb://EdisonGu:Gu198573@1.14.77.152:27017/web-emoticon?authSource=admin',
+      url: 'mongodb://EdisonGu:Gu198573@1.14.77.152:27017/web_emoticon_test?authSource=admin',
       options: {
         // name: 'web-emoticon',
         // user: 'EdisonGu',
@@ -69,18 +69,23 @@ module.exports = appInfo => {
     // myAppName: 'egg',
   };
 
-  const mongo = {
-    client: {
-      host: '1.14.77.152',
-      port: '27017',
-      name: 'root',
-      options: {},
-    },
-  };
+  const mongoConfig = {
+    a: 1
+  }
+
+  // const mongo = {
+  //   client: {
+  //     host: '1.14.77.152',
+  //     port: '27017',
+  //     name: 'root',
+  //     options: {},
+  //   },
+  // };
 
   return {
     ...config,
     ...userConfig,
-    mongo,
+    mongoConfig
+    // mongo,
   };
 };

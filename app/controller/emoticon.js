@@ -3,6 +3,7 @@
 const Controller = require('egg').Controller
 const { ctxBody, objectBody, adjacentBody, randomCount } = require('../utils/common')
 
+
 class EmoticonController extends Controller {
   async getEmoticonList() {
     let list = null

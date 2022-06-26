@@ -1,0 +1,413 @@
+<html>
+
+<head>
+  <title>jQuery newWaterfall.js</title>
+  <meta charset="utf-8" name="viewport" content="initial-scale=1,maximum-scale=1">
+  <link rel="stylesheet" type="text/css" href="res/reset2.0.min.css">
+  <style>
+    html,
+    body,
+    div,
+    span,
+    applet,
+    object,
+    iframe,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    blockquote,
+    pre,
+    a,
+    abbr,
+    acronym,
+    address,
+    big,
+    cite,
+    code,
+    del,
+    dfn,
+    em,
+    img,
+    ins,
+    kbd,
+    q,
+    s,
+    samp,
+    small,
+    strike,
+    strong,
+    sub,
+    sup,
+    tt,
+    var,
+    b,
+    u,
+    i,
+    center,
+    dl,
+    dt,
+    dd,
+    ol,
+    ul,
+    li,
+    fieldset,
+    form,
+    label,
+    legend,
+    table,
+    caption,
+    tbody,
+    tfoot,
+    thead,
+    tr,
+    th,
+    td,
+    article,
+    aside,
+    canvas,
+    details,
+    embed,
+    figure,
+    figcaption,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    output,
+    ruby,
+    section,
+    summary,
+    time,
+    mark,
+    audio,
+    video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font: inherit;
+      vertical-align: baseline
+    }
+
+    article,
+    aside,
+    details,
+    figcaption,
+    figure,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    section {
+      display: block
+    }
+
+    body {
+      line-height: 1
+    }
+
+    ol,
+    ul {
+      list-style: none
+    }
+
+    blockquote,
+    q {
+      quotes: none
+    }
+
+    blockquote:before,
+    blockquote:after,
+    q:before,
+    q:after {
+      content: "";
+      content: none
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0
+    }
+
+    body {
+      background: #eee;
+      font-size: 1em;
+      letter-spacing: 0.1em;
+      line-height: 1.6em;
+      font-family: "Century Gothic";
+      font-weight: lighter;
+      color: rgba(0, 0, 0, 0.6);
+      overflow-x: hidden
+    }
+
+    #waterfall {
+      margin: 10px;
+      overflow: hidden
+    }
+
+    #waterfall.min {
+      margin: 0
+    }
+
+    #waterfall li {
+      left: 0;
+      top: 0;
+      opacity: 0;
+      z-index: 0;
+      transform: translateY(100px)
+    }
+
+    #waterfall li:hover {
+      z-index: 1
+    }
+
+    #waterfall li.show {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.3s, top 1s
+    }
+
+    #waterfall li>div {
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 32px;
+      border-radius: 1px;
+      margin: 10px;
+      padding: 6px;
+      background: rgb(255, 255, 255);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.5s
+    }
+
+    #waterfall li>div:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s
+    }
+
+    #waterfall li.min>div {
+      margin: 0;
+      transform: none;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+    }
+
+    #waterfall li.min>div:hover {
+      transform: none;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+    }
+
+    #waterfall li>div>img {
+      width: 100%
+    }
+  </style>
+</head>
+
+<body>
+  <ul id="waterfall">
+    <li>
+      <div><img src="https://picsum.photos/640/200/?random"></div>
+    </li>
+    <li>
+      <div><img src="https://picsum.photos/360/640/?random"></div>
+    </li>
+    <li>
+      <div><img src="https://picsum.photos/480/720/?random"></div>
+    </li>
+    <li>
+      <div><img src="https://picsum.photos/480/640/?random"></div>
+    </li>
+    <li>
+      <div><img src="https://picsum.photos/360/?random"></div>
+    </li>
+    <li>
+      <div><img src="https://picsum.photos/360/520/?random"></div>
+    </li>
+    <li>
+      <div><img src="https://picsum.photos/520/360/?random"></div>
+    </li>
+    <li>
+      <div><img src="https://picsum.photos/720/640/?random"></div>
+    </li>
+  </ul>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript">
+    /*	 Waterfall Flow Code By: ONEO 2015.08.26
+  NewWaterfall Flow Code By: ONEO 2016.10.25
+------------------------------------------------------*/
+    (function () {
+      $.fn.NewWaterfall = function (options) {
+        // 参数
+        var defaults = {
+          width: 360,
+          delay: 100,
+          repeatShow: false
+        };
+        var config = $.extend({}, defaults, options);
+        var ul = this;
+        // 功能
+        var show = function (li) {
+          if ($(window).scrollTop() + $(window).height() > $(li).offset().top) {
+            $(li).addClass("show");
+          } else if ($(window).scrollTop() + $(window).height() < $(li).offset().top) {
+            if (config.repeatShow) {
+              $(li).removeClass("show");
+            }
+          }
+        };
+        var refresh = function () {
+          if (ul.length <= 0) {
+            return;
+          }
+
+          ul.css({
+            position: "relative"
+          });
+
+          // 参数
+          var lis = $(ul).children("li");
+
+          if (lis.length <= 0) {
+            return;
+          }
+
+          var ul_width = $(ul).width();
+          var ul_column = parseInt(ul_width / config.width);
+
+          if (lis.length < ul_column) {
+            ul_column = lis.length;
+          }
+
+          var li_left = (ul_width - ul_column * config.width) / 2;
+
+          if (ul_column > 0) {
+            $(ul).removeClass("min");
+
+            // 基础样式设置
+            lis.css({
+              position: "absolute",
+              width: config.width
+            });
+
+            // 变量
+            var maxHeight = 0;
+            var list = [];
+            var nlist = [];
+
+            // 初始化列表
+            for (var i = 0; i < lis.length; i++) {
+              list.push({
+                index: i,
+                bottom: 0,
+                height: $(lis[i]).height()
+              });
+            }
+
+            // 初始化列
+            for (var i = 0; i < ul_column; i++) {
+              nlist.push([]);
+            }
+
+            // 智能排序
+            for (var i = 0; i < lis.length; i++) {
+              if (i < ul_column) {
+                list[i]["bottom"] = list[i]["height"];
+                nlist[i].push(list[i]);
+              } else {
+                var b = 0;
+                var l = 0;
+                for (var j = 0; j < ul_column; j++) {
+                  var jh = nlist[j][nlist[j].length - 1]["bottom"] + list[i]["height"];
+                  if (b == 0 || jh < b) {
+                    b = jh;
+                    l = j;
+                  }
+                }
+                list[i]["bottom"] = b;
+                nlist[l].push(list[i]);
+              }
+            }
+
+            // 开始布局
+            for (var i = 0; i < nlist.length; i++) {
+              for (var j = 0; j < nlist[i].length; j++) {
+                $(lis[nlist[i][j]["index"]]).css({
+                  left: i * config.width + li_left,
+                  top: nlist[i][j]["bottom"] - nlist[i][j]["height"]
+                });
+              }
+            }
+
+            // 设置最大高度
+            for (var i = 0; i < nlist.length; i++) {
+              var h = nlist[i][nlist[i].length - 1]["bottom"];
+              if (maxHeight < h) {
+                maxHeight = h;
+              }
+            }
+            $(ul).css("height", maxHeight);
+          } else {
+            lis.attr("style", "");
+            ul.attr("style", "");
+            $(ul).addClass("min");
+          }
+
+          // 显示列表
+          for (var i = 0; i < lis.length; i++) {
+            show(lis[i]);
+          }
+        };
+
+        // 刷新
+        refresh();
+        setInterval(refresh, config.delay);
+      };
+    })();
+
+
+  </script>
+  <script type="text/javascript">
+    // 文档加载完毕后执行
+    $(document).ready(function () {
+      $("#waterfall").NewWaterfall({
+        // width: 360,
+        // delay: 100
+      });
+    });
+    // 自动加载更多
+    function random(min, max) {
+      return min + Math.floor(Math.random() * (max - min + 1));
+    }
+    var loading = false;
+    var dist = 500;
+    var num = 1;
+    setInterval(function () {
+      if (
+        $(window).scrollTop() >= $(document).height() - $(window).height() - dist &&
+        !loading
+      ) {
+        // 表示开始加载
+        loading = true;
+        // 加载内容
+        $("#waterfall").append(
+          "<li><div style='height:" + random(50, 300) + "px'>" + num + "</div></li>"
+        );
+        num++;
+        // 表示加载结束
+        loading = false;
+      }
+    }, 60);
+  </script>
+</body>
+
+</html>
