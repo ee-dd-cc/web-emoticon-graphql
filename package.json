@@ -26,7 +26,7 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "dev": "egg-bin dev --env=dev",
+    "dev": "egg-bin dev",
     "dev:prod": "egg-bin dev --env=prod", 
     "start:dev": "egg-scripts start --env=dev --daemon --title=egg-server-web-emoticon-graphql --ignore-stderr",
     "start:prod": "egg-scripts start --env=prod --daemon --title=egg-server-web-emoticon-graphql --ignore-stderr",
