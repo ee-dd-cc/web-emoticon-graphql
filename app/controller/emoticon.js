@@ -1,3 +1,10 @@
+/*
+ * @Author: EdisonGu
+ * @Date: 2022-05-03 12:03:57
+ * @LastEditors: EdisonGu
+ * @LastEditTime: 2022-07-23 18:23:21
+ * @Descripttion: 
+ */
 'use strict';
 
 const Controller = require('egg').Controller
@@ -30,20 +37,21 @@ class EmoticonController extends Controller {
       let { id = 1000 } = this.ctx.query // 没有表情包默认返回第一张
       id = Number(id)
       const list = await this.ctx.model.Emoticon.find({ id })
-      const preNode = await this.ctx.model.Emoticon.find({
-        id: { "$lt": id }
-      }).sort({id: -1}).limit(1)
-      const nextNode = await this.ctx.model.Emoticon.find({
+      const upNode = await this.ctx.model.Emoticon.find({ // 升序
         id: { "$gt": id }
       }).sort({id: 1}).limit(1)
+      const downNode = await this.ctx.model.Emoticon.find({ // 降序
+        id: { "$lt": id }
+      }).sort({id: -1}).limit(1)
       adjacentInfo = {
         selfNode: list[0],
-        preNode: preNode[0],
-        nextNode: nextNode[0]
+        upNode: upNode[0],
+        downNode: downNode[0]
       }
     } catch (error) {
       console.log('getEmoticonDetail---error', error)
     } finally {
+      
       this.ctx.body = adjacentBody({item: adjacentInfo})
     }
   }

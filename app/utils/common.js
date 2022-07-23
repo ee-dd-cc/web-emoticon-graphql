@@ -1,3 +1,10 @@
+/*
+ * @Author: EdisonGu
+ * @Date: 2022-05-10 11:20:00
+ * @LastEditors: EdisonGu
+ * @LastEditTime: 2022-07-23 18:24:00
+ * @Descripttion: 
+ */
 'use strict';
 
 module.exports = {
@@ -25,14 +32,14 @@ module.exports = {
       code: -1,
       data: null
     }
-    const { selfNode, preNode = {}, nextNode = {} } = item
+    const { selfNode, upNode = {}, downNode = {} } = item
     if (selfNode) {
       body = {
         code: 1,
         data: {
           selfNode,
-          preNode,
-          nextNode,
+          upNode,
+          downNode,
           ...custom
         }
       }
