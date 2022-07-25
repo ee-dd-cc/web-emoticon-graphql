@@ -2,7 +2,7 @@
  * @Author: EdisonGu
  * @Date: 2022-05-03 21:04:12
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-07-23 18:24:58
+ * @LastEditTime: 2022-07-25 22:55:14
  * @Descripttion: 
  */
 'use strict';
@@ -11,6 +11,9 @@ const Controller = require('egg').Controller;
 const { ctxBody, objectBody, adjacentBody, randomCount } = require('../utils/common')
 
 class EmojiController extends Controller {
+  /**
+   * 获取表情包详情
+   */
   async getEmojiDetail() {
     let adjacentInfo = {}
     let hot = null
@@ -35,6 +38,21 @@ class EmojiController extends Controller {
       console.log('getEmojiDetail---error', error)
     } finally {
       this.ctx.body = adjacentBody({ item: adjacentInfo, custom: { hot } })
+    }
+  }
+  /**
+   * 获取首页热门表情
+   */
+  async getHotEmoji() {
+    let list = null
+    let count = 0
+    try {
+      count = await this.ctx.model.Emoji.find().count()
+      list = await this.ctx.model.Emoji.find().limit(100)
+    } catch (error) {
+      
+    } finally {
+      this.ctx.body = ctxBody({ list })
     }
   }
 }

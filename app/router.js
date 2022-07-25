@@ -1,3 +1,10 @@
+/*
+ * @Author: EdisonGu
+ * @Date: 2022-05-03 12:03:57
+ * @LastEditors: EdisonGu
+ * @LastEditTime: 2022-07-25 23:11:32
+ * @Descripttion: 
+ */
 'use strict';
 
 /**
@@ -9,6 +16,7 @@ module.exports = app => {
   router.get('/emoticonList', controller.emoticon.getEmoticonList);
   router.get('/emoticonDetail', controller.emoticon.getEmoticonDetail);
   router.get('/emojiDetail', controller.emoji.getEmojiDetail);
+  router.get('/hotEmoji', controller.emoji.getHotEmoji);
   router.get('/searchKeyword', controller.emoticon.searchKeyword);
   router.get('/addDemo', controller.web.addDemo);
   // router.get('/demo', controller.user.index);
