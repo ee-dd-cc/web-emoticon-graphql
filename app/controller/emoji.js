@@ -2,7 +2,7 @@
  * @Author: EdisonGu
  * @Date: 2022-05-03 21:04:12
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-07-28 23:38:00
+ * @LastEditTime: 2022-07-28 23:44:15
  * @Descripttion: 
  */
 'use strict';
@@ -47,13 +47,19 @@ class EmojiController extends Controller {
   async getHotEmoji() {
     let list = null
     let count = 0
+    let obj = {
+      id: 1000,
+      id: 2000,
+      id: 3000
+    }
     try {
       count = await this.ctx.model.Emoji.find().count()
       // 随机取大于1000id的5条数据
       list = await this.ctx.model.Emoji.aggregate([
-        {'$match': {id: {$gt: 1000, $lt: 1050}}}
+        // {'$match': {id: {$gt: 1000, $lt: 1050}}}
+        {'$match': obj}
       ]).sample(5)
-      console.log('----first', this.first)
+      console.log('----first',list.length, obj)
     } catch (error) {
       console.log('---error', error)
     } finally {
