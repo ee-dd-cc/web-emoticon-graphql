@@ -2,7 +2,7 @@
  * @Author: EdisonGu
  * @Date: 2022-05-03 21:04:12
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-07-25 22:55:14
+ * @LastEditTime: 2022-07-28 23:33:44
  * @Descripttion: 
  */
 'use strict';
@@ -48,9 +48,13 @@ class EmojiController extends Controller {
     let count = 0
     try {
       count = await this.ctx.model.Emoji.find().count()
-      list = await this.ctx.model.Emoji.find().limit(100)
+      // 随机取大于1000id的5条数据
+      list = await this.ctx.model.Emoji.aggregate([
+        {'$match': {id: {$gt: 1000, $lt: 1050}}}
+      ]).sample(5)
+      console.log('----list', list)
     } catch (error) {
-      
+      console.log('---error', error)
     } finally {
       this.ctx.body = ctxBody({ list })
     }
