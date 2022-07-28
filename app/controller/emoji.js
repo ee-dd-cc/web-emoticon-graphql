@@ -2,7 +2,7 @@
  * @Author: EdisonGu
  * @Date: 2022-05-03 21:04:12
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-07-28 23:33:44
+ * @LastEditTime: 2022-07-28 23:38:00
  * @Descripttion: 
  */
 'use strict';
@@ -11,6 +11,7 @@ const Controller = require('egg').Controller;
 const { ctxBody, objectBody, adjacentBody, randomCount } = require('../utils/common')
 
 class EmojiController extends Controller {
+  first = true
   /**
    * 获取表情包详情
    */
@@ -52,7 +53,7 @@ class EmojiController extends Controller {
       list = await this.ctx.model.Emoji.aggregate([
         {'$match': {id: {$gt: 1000, $lt: 1050}}}
       ]).sample(5)
-      console.log('----list', list)
+      console.log('----first', this.first)
     } catch (error) {
       console.log('---error', error)
     } finally {
