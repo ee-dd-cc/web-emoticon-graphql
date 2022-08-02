@@ -2,13 +2,13 @@
  * @Author: EdisonGu
  * @Date: 2022-05-03 21:04:12
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-08-02 12:28:26
+ * @LastEditTime: 2022-08-02 13:25:05
  * @Descripttion: 
  */
 'use strict';
 
 const Controller = require('egg').Controller;
-const { ctxBody, objectBody, adjacentBody, randomListById } = require('../utils/common')
+const { ctxBody, objectBody, adjacentBody, minCount, maxCount } = require('../utils/common')
 
 class EmojiController extends Controller {
   first = true
@@ -49,23 +49,27 @@ class EmojiController extends Controller {
     const cacheTime = 24 * 3600
     const { id: qId = 1000, pageSize: qPageSize } = ctx.query
     let list = null
+    let count = null
     id = id ? id : Number(qId)
     pageSize = pageSize ? pageSize : Number(qPageSize)
     try {
-      const count = await ctx.model.Emoji.find().count()
+      const rCount = await app.redis.get(`emoji_count`)
       const rList = await app.redis.get(`emoji_hot_${id}`)
-      if (rList && JSON.parse(rList).length === pageSize) {
+      if (rList && rCount && JSON.parse(rList).length === pageSize) {
+        count = rCount
         list = JSON.parse(rList)
       } else {
+        count = await ctx.model.Emoji.find().count()
         list = await ctx.model.Emoji.aggregate([
           {
             $match: {
-              id: { $gt: id + 100, $lt: id + 900  }
+              id: { $gt: minCount({id, pageSize, total: count}), $lt: maxCount({id, pageSize, total: count})  }
             }
           }
         ]).sample(pageSize)
         if (list && list.length) {
           app.redis.set(`emoji_hot_${id}`, JSON.stringify(list), 'EX', cacheTime)
+          app.redis.set(`emoji_count`, count, 'EX', cacheTime)
         }
       }
     } catch (error) {

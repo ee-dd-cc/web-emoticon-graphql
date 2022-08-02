@@ -2,7 +2,7 @@
  * @Author: EdisonGu
  * @Date: 2022-05-10 5:20:00
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-07-29 23:38:56
+ * @LastEditTime: 2022-08-02 13:22:33
  * @Descripttion: 
  */
 'use strict';
@@ -69,5 +69,28 @@ module.exports = {
       })
     }
     return orList
-  }
+  },
+  /**
+   * 根据id和total获取范围
+   */
+  minCount({id, total, pageSize, multiple = 20, spacing = 50}) {
+    let minCount = id + spacing
+    const maxCount = id + pageSize * multiple
+    if ((maxCount - 1000) > total) { // 数据库id，默认从1000开始
+      minCount = id - pageSize * multiple
+    }
+    console.log('----minCount', minCount)
+    return minCount
+  },
+  /**
+   * 根据id和total获取范围
+   */
+   maxCount({id, total, pageSize, multiple = 20, spacing = 50}) {
+    let maxCount = id + pageSize * multiple
+    if ((maxCount - 1000) > total) {
+      maxCount = id - spacing
+    }
+    console.log('-----maxCount', maxCount)
+    return maxCount
+  },
 }
