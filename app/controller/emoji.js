@@ -2,7 +2,7 @@
  * @Author: EdisonGu
  * @Date: 2022-05-03 21:04:12
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-07-29 23:09:31
+ * @LastEditTime: 2022-08-02 12:28:26
  * @Descripttion: 
  */
 'use strict';
@@ -45,23 +45,33 @@ class EmojiController extends Controller {
    * 获取首页热门表情
    */
   async getHotEmoji({id, pageSize = 20}) {
+    const { app, ctx } = this
+    const cacheTime = 24 * 3600
+    const { id: qId = 1000, pageSize: qPageSize } = ctx.query
     let list = null
-    const { id: qId = 1000, pageSize: qPageSize } = this.ctx.query
+    id = id ? id : Number(qId)
+    pageSize = pageSize ? pageSize : Number(qPageSize)
     try {
-      const count = await this.ctx.model.Emoji.find().count()
-      const orList = randomListById({
-        id: id || +qId,
-        pageSize: pageSize || qPageSize,
-        maxId: count + 1000 - 1,
-        isUp: false
-      })
-      list = await this.ctx.model.Emoji.find({
-        $or: orList
-      })
+      const count = await ctx.model.Emoji.find().count()
+      const rList = await app.redis.get(`emoji_hot_${id}`)
+      if (rList && JSON.parse(rList).length === pageSize) {
+        list = JSON.parse(rList)
+      } else {
+        list = await ctx.model.Emoji.aggregate([
+          {
+            $match: {
+              id: { $gt: id + 100, $lt: id + 900  }
+            }
+          }
+        ]).sample(pageSize)
+        if (list && list.length) {
+          app.redis.set(`emoji_hot_${id}`, JSON.stringify(list), 'EX', cacheTime)
+        }
+      }
     } catch (error) {
       console.log('---error', error)
     } finally {
-      this.ctx.body = ctxBody({ list })
+      ctx.body = ctxBody({ list })
       return list
     }
   }
