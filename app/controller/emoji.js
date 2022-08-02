@@ -2,7 +2,7 @@
  * @Author: EdisonGu
  * @Date: 2022-05-03 21:04:12
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-08-02 14:28:48
+ * @LastEditTime: 2022-08-02 16:30:20
  * @Descripttion: 
  */
 'use strict';
@@ -41,7 +41,7 @@ class EmojiController extends Controller {
     }
   }
   /**
-   * 获取首页热门表情
+   * 根据id，随机获取[id + 50, id + pageSize * 20]范围内的表情
    */
   async getHotEmoji({id, pageSize = 20}) {
     const { app, ctx } = this
@@ -52,8 +52,8 @@ class EmojiController extends Controller {
     id = id ? id : Number(qId)
     pageSize = pageSize ? pageSize : Number(qPageSize)
     try {
-      const rCount = await app.redis.get(`emoji_count`)
-      const rList = await app.redis.get(`emoji_hot_${id}`)
+      const rCount = await app.redis.get('emoji').get(`emoji_count`)
+      const rList = await app.redis.get('emoji').get(`emoji_hot_${id}`)
       if (rList && rCount && JSON.parse(rList).length === pageSize) {
         count = rCount
         list = JSON.parse(rList)
@@ -67,8 +67,8 @@ class EmojiController extends Controller {
           }
         ]).sample(pageSize)
         if (list && list.length) {
-          app.redis.set(`emoji_hot_${id}`, JSON.stringify(list), 'EX', cacheTime)
-          app.redis.set(`emoji_count`, count, 'EX', cacheTime)
+          app.redis.get('emoji').set(`emoji_hot_${id}`, JSON.stringify(list), 'EX', cacheTime)
+          app.redis.get('emoji').set(`emoji_count`, count, 'EX', cacheTime)
         }
       }
     } catch (error) {
@@ -78,7 +78,6 @@ class EmojiController extends Controller {
       return list
     }
   }
-
   
 }
 
