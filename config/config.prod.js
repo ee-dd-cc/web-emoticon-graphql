@@ -1,3 +1,10 @@
+/*
+ * @Author: EdisonGu
+ * @Date: 2022-06-27 09:27:22
+ * @LastEditors: EdisonGu
+ * @LastEditTime: 2022-08-02 10:18:43
+ * @Descripttion: 
+ */
 /* eslint valid-jsdoc: "off" */
 
 'use strict';
@@ -46,6 +53,15 @@ module.exports = appInfo => {
       url: 'mongodb://EdisonGu:Gu198573@1.14.77.152:27017/web-emoticon?authSource=admin',
       options: {},
     },
+  };
+
+  config.redis = {
+    client: {
+      host: '1.14.77.152',
+      port: 6379,
+      password: 'Gu198573',
+      db: 1
+    }
   };
 
   config.security = {
