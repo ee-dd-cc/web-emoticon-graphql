@@ -2,7 +2,7 @@
  * @Author: EdisonGu
  * @Date: 2022-05-03 21:04:12
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-08-02 13:25:05
+ * @LastEditTime: 2022-08-02 14:28:48
  * @Descripttion: 
  */
 'use strict';
@@ -11,7 +11,6 @@ const Controller = require('egg').Controller;
 const { ctxBody, objectBody, adjacentBody, minCount, maxCount } = require('../utils/common')
 
 class EmojiController extends Controller {
-  first = true
   /**
    * 获取表情包详情
    */
