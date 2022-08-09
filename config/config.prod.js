@@ -2,7 +2,7 @@
  * @Author: EdisonGu
  * @Date: 2022-06-27 09:27:22
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-08-02 10:18:43
+ * @LastEditTime: 2022-08-09 20:23:39
  * @Descripttion: 
  */
 /* eslint valid-jsdoc: "off" */
@@ -56,11 +56,19 @@ module.exports = appInfo => {
   };
 
   config.redis = {
-    client: {
-      host: '1.14.77.152',
-      port: 6379,
-      password: 'Gu198573',
-      db: 1
+    clients: {
+      emoticon: {
+        host: '1.14.77.152',
+        port: 6379,
+        password: 'Gu198573',
+        db: 1
+      },
+      emoji: {
+        host: '1.14.77.152',
+        port: 6379,
+        password: 'Gu198573',
+        db: 2
+      }
     }
   };
 
