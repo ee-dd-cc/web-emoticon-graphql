@@ -195,11 +195,19 @@
       "app": true,
       "agent": false,
       "supportTimeCommand": true,
-      "client": {
-        "host": "1.14.77.152",
-        "port": 6379,
-        "password": "<String len: 8>",
-        "db": 0
+      "clients": {
+        "emoticon": {
+          "host": "1.14.77.152",
+          "port": 6379,
+          "password": "<String len: 8>",
+          "db": 0
+        },
+        "emoji": {
+          "host": "1.14.77.152",
+          "port": 6379,
+          "password": "<String len: 8>",
+          "db": 0
+        }
       }
     },
     "cors": {

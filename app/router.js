@@ -2,7 +2,7 @@
  * @Author: EdisonGu
  * @Date: 2022-05-03 12:03:57
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-08-02 10:30:53
+ * @LastEditTime: 2022-08-09 12:07:38
  * @Descripttion: 
  */
 'use strict';
@@ -20,6 +20,7 @@ module.exports = app => {
   router.get('/searchKeyword', controller.emoticon.searchKeyword);
   router.get('/addDemo', controller.web.addDemo);
   router.get('/eggDemo', controller.redis.eggDemo);
+  router.get('/getMovieInfo', controller.movie.getMovieInfo);
   // router.get('/demo', controller.user.index);
   // router.get('/web_demo', controller.user.web_demo);
   // router.get('/add', controller.user.addUser);

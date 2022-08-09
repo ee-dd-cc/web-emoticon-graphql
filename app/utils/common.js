@@ -2,10 +2,11 @@
  * @Author: EdisonGu
  * @Date: 2022-05-10 5:20:00
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-08-02 14:25:14
+ * @LastEditTime: 2022-08-09 19:53:58
  * @Descripttion: 
  */
 'use strict';
+// const fs = require('fs')
 
 const ctxBody = ({list = [], custom = {}}) => {
   let body = {
@@ -72,11 +73,73 @@ const maxCount = ({id, total, pageSize, multiple = 20, spacing = 50}) => {
   return maxCount
 }
 
+/**
+ * 去除前后空格和多余的字符
+ * @param {*} str 
+ */
+const dealStr = ({str, strList = []}) => {
+  strList.forEach(el => {
+    str = str.replace(el, '')
+  })
+  return str.replace(/(^\s*)|(\s*$)/g, '')
+}
+
+const transCode = key => {
+  let code = ''
+  switch (key) {
+    case '导演':
+      code = 'director'
+      break;
+    case '编剧':
+      code = 'author'
+      break;
+    case '主演':
+      code = 'actor'
+      break;
+    case '类型':
+      code = 'type'
+      break;
+    case '制片国家/地区':
+      code = 'area'
+      break;
+    case '语言':
+      code = 'language'
+      break;
+    case '上映日期':
+      code = 'publish_time'
+      break;
+    case '片长':
+      code = 'video_time'
+      break;
+    case '又名':
+      code = 'other_name'
+      break;
+    case 'IMDb':
+      code = 'imdb_no'
+      break;
+    case '首播': // 电视剧
+      code = 'first_area'
+      break;
+    case '集数': // 电视剧
+      code = 'tv_total'
+      break;
+    case '单集片长': // 电视剧
+      code = 'single_episode_time'
+      break;
+  
+    default:
+      break;
+  }
+  return code
+}
+
 module.exports = {
   ctxBody,
   objectBody,
   adjacentBody,
   randomCount,
   minCount,
-  maxCount
+  maxCount,
+  dealStr,
+  transCode
 }

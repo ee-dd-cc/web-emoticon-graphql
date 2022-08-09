@@ -25,11 +25,19 @@
     "agent": "/Users/person/web-emoticon-graphql/node_modules/egg-mongoose/config/config.default.js"
   },
   "redis": {
-    "client": {
-      "host": "/Users/person/web-emoticon-graphql/config/config.default.js",
-      "port": "/Users/person/web-emoticon-graphql/config/config.default.js",
-      "password": "/Users/person/web-emoticon-graphql/config/config.default.js",
-      "db": "/Users/person/web-emoticon-graphql/config/config.default.js"
+    "clients": {
+      "emoticon": {
+        "host": "/Users/person/web-emoticon-graphql/config/config.default.js",
+        "port": "/Users/person/web-emoticon-graphql/config/config.default.js",
+        "password": "/Users/person/web-emoticon-graphql/config/config.default.js",
+        "db": "/Users/person/web-emoticon-graphql/config/config.default.js"
+      },
+      "emoji": {
+        "host": "/Users/person/web-emoticon-graphql/config/config.default.js",
+        "port": "/Users/person/web-emoticon-graphql/config/config.default.js",
+        "password": "/Users/person/web-emoticon-graphql/config/config.default.js",
+        "db": "/Users/person/web-emoticon-graphql/config/config.default.js"
+      }
     },
     "default": "/Users/person/web-emoticon-graphql/node_modules/egg-redis/config/config.default.js",
     "app": "/Users/person/web-emoticon-graphql/node_modules/egg-redis/config/config.default.js",
@@ -211,12 +219,14 @@
       "declarations": "/Users/person/web-emoticon-graphql/node_modules/egg/config/config.default.js"
     },
     "dependencies": {
+      "cheerio": "/Users/person/web-emoticon-graphql/node_modules/egg/config/config.default.js",
       "egg": "/Users/person/web-emoticon-graphql/node_modules/egg/config/config.default.js",
       "egg-cors": "/Users/person/web-emoticon-graphql/node_modules/egg/config/config.default.js",
       "egg-graphql": "/Users/person/web-emoticon-graphql/node_modules/egg/config/config.default.js",
       "egg-mongoose": "/Users/person/web-emoticon-graphql/node_modules/egg/config/config.default.js",
       "egg-redis": "/Users/person/web-emoticon-graphql/node_modules/egg/config/config.default.js",
-      "egg-scripts": "/Users/person/web-emoticon-graphql/node_modules/egg/config/config.default.js"
+      "egg-scripts": "/Users/person/web-emoticon-graphql/node_modules/egg/config/config.default.js",
+      "fs": "/Users/person/web-emoticon-graphql/node_modules/egg/config/config.default.js"
     },
     "devDependencies": {
       "autod": "/Users/person/web-emoticon-graphql/node_modules/egg/config/config.default.js",
