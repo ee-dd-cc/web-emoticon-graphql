@@ -103,29 +103,28 @@
     "onerror": {
       "errorPageUrl": "",
       "appErrorFilter": null,
-      "templatePath": "/Users/person/web-emoticon-graphql/node_modules/egg-onerror/lib/onerror_page.mustache"
+      "templatePath": "/data/server/web-emoticon-graphql/node_modules/egg-onerror/lib/onerror_page.mustache"
     },
     "i18n": {
       "defaultLocale": "en_US",
       "dirs": [
-        "/Users/person/web-emoticon-graphql/node_modules/egg-session/config/locales",
-        "/Users/person/web-emoticon-graphql/node_modules/egg-security/config/locales",
-        "/Users/person/web-emoticon-graphql/node_modules/egg-jsonp/config/locales",
-        "/Users/person/web-emoticon-graphql/node_modules/egg-onerror/config/locales",
-        "/Users/person/web-emoticon-graphql/node_modules/egg-i18n/config/locales",
-        "/Users/person/web-emoticon-graphql/node_modules/egg-watcher/config/locales",
-        "/Users/person/web-emoticon-graphql/node_modules/egg-schedule/config/locales",
-        "/Users/person/web-emoticon-graphql/node_modules/egg-multipart/config/locales",
-        "/Users/person/web-emoticon-graphql/node_modules/egg-development/config/locales",
-        "/Users/person/web-emoticon-graphql/node_modules/egg-logrotator/config/locales",
-        "/Users/person/web-emoticon-graphql/node_modules/egg-static/config/locales",
-        "/Users/person/web-emoticon-graphql/node_modules/egg-view/config/locales",
-        "/Users/person/web-emoticon-graphql/node_modules/egg-graphql/config/locales",
-        "/Users/person/web-emoticon-graphql/node_modules/egg-mongoose/config/locales",
-        "/Users/person/web-emoticon-graphql/node_modules/egg-redis/config/locales",
-        "/Users/person/web-emoticon-graphql/node_modules/egg-cors/config/locales",
-        "/Users/person/web-emoticon-graphql/node_modules/egg/config/locales",
-        "/Users/person/web-emoticon-graphql/config/locales"
+        "/data/server/web-emoticon-graphql/node_modules/egg-session/config/locales",
+        "/data/server/web-emoticon-graphql/node_modules/egg-security/config/locales",
+        "/data/server/web-emoticon-graphql/node_modules/egg-jsonp/config/locales",
+        "/data/server/web-emoticon-graphql/node_modules/egg-onerror/config/locales",
+        "/data/server/web-emoticon-graphql/node_modules/egg-i18n/config/locales",
+        "/data/server/web-emoticon-graphql/node_modules/egg-watcher/config/locales",
+        "/data/server/web-emoticon-graphql/node_modules/egg-schedule/config/locales",
+        "/data/server/web-emoticon-graphql/node_modules/egg-multipart/config/locales",
+        "/data/server/web-emoticon-graphql/node_modules/egg-logrotator/config/locales",
+        "/data/server/web-emoticon-graphql/node_modules/egg-static/config/locales",
+        "/data/server/web-emoticon-graphql/node_modules/egg-view/config/locales",
+        "/data/server/web-emoticon-graphql/node_modules/egg-graphql/config/locales",
+        "/data/server/web-emoticon-graphql/node_modules/egg-mongoose/config/locales",
+        "/data/server/web-emoticon-graphql/node_modules/egg-redis/config/locales",
+        "/data/server/web-emoticon-graphql/node_modules/egg-cors/config/locales",
+        "/data/server/web-emoticon-graphql/node_modules/egg/config/locales",
+        "/data/server/web-emoticon-graphql/config/locales"
       ],
       "queryField": "locale",
       "cookieField": "locale",
@@ -134,10 +133,10 @@
       "functionName": "__"
     },
     "watcher": {
-      "type": "development",
+      "type": "default",
       "eventSources": {
-        "default": "/Users/person/web-emoticon-graphql/node_modules/egg-watcher/lib/event-sources/default",
-        "development": "/Users/person/web-emoticon-graphql/node_modules/egg-watcher/lib/event-sources/development"
+        "default": "/data/server/web-emoticon-graphql/node_modules/egg-watcher/lib/event-sources/default",
+        "development": "/data/server/web-emoticon-graphql/node_modules/egg-watcher/lib/event-sources/development"
       }
     },
     "customLogger": {
@@ -161,19 +160,11 @@
       "fileExtensions": [],
       "whitelist": null,
       "allowArrayField": false,
-      "tmpdir": "/var/folders/lw/f53365h10rg8lf9x7ktlrqj40000gn/T/egg-multipart-tmp/web-emoticon-graphql",
+      "tmpdir": "/tmp/egg-multipart-tmp/web-emoticon-graphql",
       "cleanSchedule": {
         "cron": "0 30 4 * * *",
         "disable": false
       }
-    },
-    "development": {
-      "watchDirs": [],
-      "ignoreDirs": [],
-      "fastReady": false,
-      "reloadOnDebug": true,
-      "overrideDefault": false,
-      "overrideIgnore": false
     },
     "logrotator": {
       "filesRotateByHour": null,
@@ -186,15 +177,16 @@
     },
     "static": {
       "prefix": "/public/",
-      "dir": "/Users/person/web-emoticon-graphql/app/public",
+      "dir": "/data/server/web-emoticon-graphql/app/public",
       "dynamic": true,
       "preload": false,
-      "buffer": false,
-      "maxFiles": 1000
+      "buffer": true,
+      "maxFiles": 1000,
+      "maxAge": 31536000
     },
     "view": {
-      "root": "/Users/person/web-emoticon-graphql/app/view",
-      "cache": false,
+      "root": "/data/server/web-emoticon-graphql/app/view",
+      "cache": true,
       "defaultExtension": ".html",
       "defaultViewEngine": "",
       "mapping": {}
@@ -218,7 +210,7 @@
       "app": true,
       "agent": false,
       "client": {
-        "url": "mongodb://EdisonGu:Gu198573@1.14.77.152:27017/web_emoticon_test?authSource=admin",
+        "url": "mongodb://EdisonGu:Gu198573@1.14.77.152:27017/web-emoticon?authSource=admin",
         "options": {
           "useNewUrlParser": true
         }
@@ -233,14 +225,14 @@
         "host": "1.14.77.152",
         "port": 6379,
         "password": "<String len: 8>",
-        "db": 0
+        "db": 1
       }
     },
     "cors": {
       "origin": "*",
       "allowMethods": "GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS"
     },
-    "env": "local",
+    "env": "prod",
     "name": "web-emoticon-graphql",
     "keys": "<String len: 39>",
     "cookies": {},
@@ -303,9 +295,9 @@
       "author": "",
       "license": "MIT"
     },
-    "baseDir": "/Users/person/web-emoticon-graphql",
-    "HOME": "/Users/edisongu",
-    "rundir": "/Users/person/web-emoticon-graphql/run",
+    "baseDir": "/data/server/web-emoticon-graphql",
+    "HOME": "/root",
+    "rundir": "/data/server/web-emoticon-graphql/run",
     "dump": {
       "ignore": "<Set>"
     },
@@ -338,21 +330,19 @@
       "returnRawBody": true
     },
     "logger": {
-      "dir": "/Users/person/web-emoticon-graphql/logs/web-emoticon-graphql",
+      "dir": "/root/logs/web-emoticon-graphql",
       "encoding": "utf8",
-      "env": "local",
+      "env": "prod",
       "level": "INFO",
       "consoleLevel": "INFO",
-      "disableConsoleAfterReady": false,
+      "disableConsoleAfterReady": true,
       "outputJSON": false,
       "buffer": true,
       "appLogName": "web-emoticon-graphql-web.log",
       "coreLogName": "egg-web.log",
       "agentLogName": "egg-agent.log",
       "errorLogName": "common-error.log",
-      "coreLogger": {
-        "consoleLevel": "WARN"
-      },
+      "coreLogger": {},
       "allowDebugAtProd": false,
       "enablePerformanceTimer": false,
       "type": "application"
@@ -391,8 +381,7 @@
       "overrideMethod",
       "session",
       "securities",
-      "i18n",
-      "eggLoaderTrace"
+      "i18n"
     ],
     "workerStartTimeout": 600000,
     "serverTimeout": null,
@@ -438,8 +427,8 @@
         "jsonp"
       ],
       "env": [],
-      "from": "/Users/person/web-emoticon-graphql/node_modules/egg/config/plugin.js",
-      "path": "/Users/person/web-emoticon-graphql/node_modules/egg-onerror",
+      "from": "/data/server/web-emoticon-graphql/node_modules/egg/config/plugin.js",
+      "path": "/data/server/web-emoticon-graphql/node_modules/egg-onerror",
       "version": "2.1.0"
     },
     "session": {
@@ -449,8 +438,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/Users/person/web-emoticon-graphql/node_modules/egg/config/plugin.js",
-      "path": "/Users/person/web-emoticon-graphql/node_modules/egg-session",
+      "from": "/data/server/web-emoticon-graphql/node_modules/egg/config/plugin.js",
+      "path": "/data/server/web-emoticon-graphql/node_modules/egg-session",
       "version": "3.3.0"
     },
     "i18n": {
@@ -460,8 +449,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/Users/person/web-emoticon-graphql/node_modules/egg/config/plugin.js",
-      "path": "/Users/person/web-emoticon-graphql/node_modules/egg-i18n",
+      "from": "/data/server/web-emoticon-graphql/node_modules/egg/config/plugin.js",
+      "path": "/data/server/web-emoticon-graphql/node_modules/egg-i18n",
       "version": "2.1.1"
     },
     "watcher": {
@@ -471,8 +460,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/Users/person/web-emoticon-graphql/node_modules/egg/config/plugin.js",
-      "path": "/Users/person/web-emoticon-graphql/node_modules/egg-watcher",
+      "from": "/data/server/web-emoticon-graphql/node_modules/egg/config/plugin.js",
+      "path": "/data/server/web-emoticon-graphql/node_modules/egg-watcher",
       "version": "3.1.1"
     },
     "multipart": {
@@ -484,8 +473,8 @@
         "schedule"
       ],
       "env": [],
-      "from": "/Users/person/web-emoticon-graphql/node_modules/egg/config/plugin.js",
-      "path": "/Users/person/web-emoticon-graphql/node_modules/egg-multipart",
+      "from": "/data/server/web-emoticon-graphql/node_modules/egg/config/plugin.js",
+      "path": "/data/server/web-emoticon-graphql/node_modules/egg-multipart",
       "version": "2.13.1"
     },
     "security": {
@@ -497,12 +486,12 @@
         "session"
       ],
       "env": [],
-      "from": "/Users/person/web-emoticon-graphql/node_modules/egg/config/plugin.js",
-      "path": "/Users/person/web-emoticon-graphql/node_modules/egg-security",
+      "from": "/data/server/web-emoticon-graphql/node_modules/egg/config/plugin.js",
+      "path": "/data/server/web-emoticon-graphql/node_modules/egg-security",
       "version": "2.10.1"
     },
     "development": {
-      "enable": true,
+      "enable": false,
       "package": "egg-development",
       "name": "development",
       "dependencies": [
@@ -512,8 +501,8 @@
       "env": [
         "local"
       ],
-      "from": "/Users/person/web-emoticon-graphql/node_modules/egg/config/plugin.js",
-      "path": "/Users/person/web-emoticon-graphql/node_modules/egg-development",
+      "from": "/data/server/web-emoticon-graphql/node_modules/egg/config/plugin.js",
+      "path": "/data/server/web-emoticon-graphql/node_modules/egg-development",
       "version": "2.7.0"
     },
     "logrotator": {
@@ -525,8 +514,8 @@
       ],
       "optionalDependencies": [],
       "env": [],
-      "from": "/Users/person/web-emoticon-graphql/node_modules/egg/config/plugin.js",
-      "path": "/Users/person/web-emoticon-graphql/node_modules/egg-logrotator",
+      "from": "/data/server/web-emoticon-graphql/node_modules/egg/config/plugin.js",
+      "path": "/data/server/web-emoticon-graphql/node_modules/egg-logrotator",
       "version": "3.1.0"
     },
     "schedule": {
@@ -536,8 +525,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/Users/person/web-emoticon-graphql/node_modules/egg/config/plugin.js",
-      "path": "/Users/person/web-emoticon-graphql/node_modules/egg-schedule",
+      "from": "/data/server/web-emoticon-graphql/node_modules/egg/config/plugin.js",
+      "path": "/data/server/web-emoticon-graphql/node_modules/egg-schedule",
       "version": "3.6.6"
     },
     "static": {
@@ -547,8 +536,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/Users/person/web-emoticon-graphql/node_modules/egg/config/plugin.js",
-      "path": "/Users/person/web-emoticon-graphql/node_modules/egg-static",
+      "from": "/data/server/web-emoticon-graphql/node_modules/egg/config/plugin.js",
+      "path": "/data/server/web-emoticon-graphql/node_modules/egg-static",
       "version": "2.2.0"
     },
     "jsonp": {
@@ -560,8 +549,8 @@
         "security"
       ],
       "env": [],
-      "from": "/Users/person/web-emoticon-graphql/node_modules/egg/config/plugin.js",
-      "path": "/Users/person/web-emoticon-graphql/node_modules/egg-jsonp",
+      "from": "/data/server/web-emoticon-graphql/node_modules/egg/config/plugin.js",
+      "path": "/data/server/web-emoticon-graphql/node_modules/egg-jsonp",
       "version": "2.0.0"
     },
     "view": {
@@ -571,8 +560,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/Users/person/web-emoticon-graphql/node_modules/egg/config/plugin.js",
-      "path": "/Users/person/web-emoticon-graphql/node_modules/egg-view",
+      "from": "/data/server/web-emoticon-graphql/node_modules/egg/config/plugin.js",
+      "path": "/data/server/web-emoticon-graphql/node_modules/egg-view",
       "version": "2.1.3"
     },
     "graphql": {
@@ -582,8 +571,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/Users/person/web-emoticon-graphql/config/plugin.js",
-      "path": "/Users/person/web-emoticon-graphql/node_modules/egg-graphql",
+      "from": "/data/server/web-emoticon-graphql/config/plugin.js",
+      "path": "/data/server/web-emoticon-graphql/node_modules/egg-graphql",
       "version": "2.8.0"
     },
     "mongoose": {
@@ -593,8 +582,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/Users/person/web-emoticon-graphql/config/plugin.js",
-      "path": "/Users/person/web-emoticon-graphql/node_modules/egg-mongoose",
+      "from": "/data/server/web-emoticon-graphql/config/plugin.js",
+      "path": "/data/server/web-emoticon-graphql/node_modules/egg-mongoose",
       "version": "3.3.1"
     },
     "redis": {
@@ -604,8 +593,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/Users/person/web-emoticon-graphql/config/plugin.js",
-      "path": "/Users/person/web-emoticon-graphql/node_modules/egg-redis",
+      "from": "/data/server/web-emoticon-graphql/config/plugin.js",
+      "path": "/data/server/web-emoticon-graphql/node_modules/egg-redis",
       "version": "2.4.0"
     },
     "cors": {
@@ -615,16 +604,16 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/Users/person/web-emoticon-graphql/config/plugin.js",
-      "path": "/Users/person/web-emoticon-graphql/node_modules/egg-cors",
+      "from": "/data/server/web-emoticon-graphql/config/plugin.js",
+      "path": "/data/server/web-emoticon-graphql/node_modules/egg-cors",
       "version": "2.2.3"
     }
   },
   "appInfo": {
     "name": "web-emoticon-graphql",
-    "baseDir": "/Users/person/web-emoticon-graphql",
-    "env": "local",
-    "HOME": "/Users/edisongu",
+    "baseDir": "/data/server/web-emoticon-graphql",
+    "env": "prod",
+    "HOME": "/root",
     "pkg": {
       "name": "web-emoticon-graphql",
       "version": "1.0.0",
@@ -678,6 +667,6 @@
       "author": "",
       "license": "MIT"
     },
-    "root": "/Users/person/web-emoticon-graphql"
+    "root": "/root"
   }
 }
