@@ -2,7 +2,7 @@
  * @Author: EdisonGu
  * @Date: 2022-08-09 11:56:42
  * @LastEditors: EdisonGu
- * @LastEditTime: 2022-08-09 20:08:15
+ * @LastEditTime: 2022-08-09 20:15:53
  * @Descripttion: 代理豆瓣搜索接口，爬取对应网站内容
  */
 const { Service } = require('egg')
@@ -36,6 +36,7 @@ class Movie extends Service {
       const title = dealStr({ str: $('title').text(), strList: [' (豆瓣)'] })
       const name = $content.find('> h1 span')[0]
       const score = $content.find('#interest_sectl .rating_num').text()
+      const description = $content.find('.related-info #link-report > span:first-child').text()
       const infoList = $videoInfo.html().split('<br>')
       const tempInfo = {}
       infoList.forEach(el => {
@@ -57,6 +58,7 @@ class Movie extends Service {
         year: dealStr({str: $year.text(), strList: ['(', ')']}),
         poster,
         score,
+        description: dealStr({str: description}),
         ...tempInfo
         // infoList
       }
